@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  chrome-extension-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached 
+      - ~/.zshrc:/root/.zshrc
+    command: sleep infinity

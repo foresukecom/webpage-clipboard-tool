@@ -1,0 +1,6 @@
+{
+  "name": "Chrome Extension Dev Container",
+  "dockerComposeFile": "compose.yml",
+  "service": "chrome-extension-dev",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}
