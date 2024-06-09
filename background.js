@@ -9,17 +9,17 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "copyPageInfo") {
     const markdownLink = `[${tab.title}](${tab.url})`;
-    copyToClipboard(markdownLink);
+    chrome.scripting.executeScript({
+      target: {tabId: tab.id},
+      files: ['content.js']
+    }, () => {
+      chrome.tabs.sendMessage(tab.id, {action: 'copy', text: markdownLink}, (response) => {
+        if (response && response.status === 'success') {
+          console.log('Copied to clipboard');
+        } else {
+          console.error('Failed to copy');
+        }
+      });
+    });
   }
 });
-
-function copyToClipboard(text) {
-  const input = document.createElement('textarea');
-  input.style.position = 'fixed';
-  input.style.opacity = '0';
-  input.value = text;
-  document.body.appendChild(input);
-  input.select();
-  document.execCommand('Copy');
-  document.body.removeChild(input);
-}
