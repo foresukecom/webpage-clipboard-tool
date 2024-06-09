@@ -1,7 +1,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "copyPageInfo",
-    title: "Copy Page Info as Markdown",
+    title: "URLコピー(format: markdown)",
     contexts: ["page"]
   });
 });
