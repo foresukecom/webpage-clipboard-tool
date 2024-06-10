@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "URLをmarkdown形式でコピー",
-  "version": "1.1",
-  "description": "URLをmarkdown形式でクリップボードでコピーする。 [タイトル](URL) のフォーマットでコピーされます。",
+  "name": "ページ情報をコピー",
+  "version": "1.2",
+  "description":"現在のページのタイトルとURLをさまざまな形式でクリップボードにコピーします。",
   "permissions": [
     "contextMenus",
     "activeTab",
