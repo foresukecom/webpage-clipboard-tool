@@ -6,6 +6,20 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 
   chrome.contextMenus.create({
+    id: "copyMarkdown",
+    parentId: "parent",
+    title: "Markdown link",
+    contexts: ["page"]
+  });
+
+  chrome.contextMenus.create({
+    id: "copyTitleAndURL",
+    parentId: "parent",
+    title: "タイトル[改行]URL",
+    contexts: ["page"]
+  });
+
+  chrome.contextMenus.create({
     id: "copyTitle",
     parentId: "parent",
     title: "タイトル",
@@ -20,18 +34,12 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 
   chrome.contextMenus.create({
-    id: "copyMarkdown",
+    id: "copyURLWithoutQuery",
     parentId: "parent",
-    title: "Markdown link",
+    title: "URL(クエリ文字列除去)",
     contexts: ["page"]
   });
 
-  chrome.contextMenus.create({
-    id: "copyTitleAndURL",
-    parentId: "parent",
-    title: "タイトル&URL",
-    contexts: ["page"]
-  });
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
@@ -47,6 +55,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   } else if (info.menuItemId === "copyTitleAndURL") {
     const text = `${tab.title}\n${tab.url}`;
     copyTextToClipboard(tab.id, text);
+  } else if (info.menuItemId === "copyURLWithoutQuery") {
+    const urlWithoutQuery = tab.url.split('?')[0];
+    copyTextToClipboard(tab.id, urlWithoutQuery);
   }
 });
 
