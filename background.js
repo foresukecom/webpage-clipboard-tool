@@ -56,8 +56,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     const text = `${tab.title}\n${tab.url}`;
     copyTextToClipboard(tab.id, text);
   } else if (info.menuItemId === "copyURLWithoutQuery") {
-    const urlWithoutQuery = tab.url.split('?')[0];
-    copyTextToClipboard(tab.id, urlWithoutQuery);
+    const url = new URL(tab.url);
+    url.search = '';
+    url.hash = '';
+    copyTextToClipboard(tab.id, url.toString());
   }
 });
 
