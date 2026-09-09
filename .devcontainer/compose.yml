@@ -1,11 +1,40 @@
-version: '3.8'
-
 services:
-  chrome-extension-dev:
+  devcontainer:
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ../..:/workspaces:cached 
-      - ~/.zshrc:/root/.zshrc
+      # プロジェクトファイルのマウント
+      - ../..:/workspaces:cached
+      # ホストのzsh設定をマウント（存在する場合）
+      - ~/.zshrc:/home/developer/.zshrc_host:ro
+      - ~/.zsh_history:/home/developer/.zsh_history:cached
+      - ~/.zsh_aliases:/home/developer/.zsh_aliases:ro
+      # Git設定のマウント
+      - ~/.gitconfig:/home/developer/.gitconfig:ro
+      - ~/.ssh:/home/developer/.ssh:ro
+      # Claude Code設定のマウント（プロジェクト横断で共有・書き込みあり）
+      - ~/.claude:/home/developer/.claude
+      - ~/.claude.json:/home/developer/.claude.json
+      # GitHub CLI認証情報のマウント（プロジェクト横断で共有・書き込みあり）
+      - ~/.config/gh:/home/developer/.config/gh
+      # ホスト共有ディレクトリ（全コンテナ共通・書き込みあり）
+      - ${SHARED_DIR:-${HOME}/Documents/shared}:/home/developer/shared:cached
+      # Node.js関連のキャッシュマウント
+      - node-modules-cache:/home/developer/.npm
+      - yarn-cache:/home/developer/.yarn
+      - pnpm-cache:/home/developer/.local/share/pnpm
+      # Playwrightのブラウザ（コンテナ再作成のたびに再取得しないよう永続化）
+      - playwright-browsers:/ms-playwright
+    environment:
+      - SHELL=/bin/zsh
+      - NODE_ENV=development
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
     command: sleep infinity
+    user: developer
+
+volumes:
+  node-modules-cache:
+  yarn-cache:
+  pnpm-cache:
+  playwright-browsers:
