@@ -65,3 +65,13 @@ npm test
 ```
 
 右クリックメニューは Playwright から操作できないため、テストではメニュークリック時に呼ばれる `handleMenuClick` を直接実行しています。
+
+### ストア提出用ファイルの作成
+
+```bash
+npm run package       # dist/webpage-clipboard-tool-<version>.zip を作成
+npm run screenshots   # store/*.html から 1280x800 のスクリーンショットを作成
+./scripts/generate-icons.sh  # images/icon-source.png から icons/ を再生成
+```
+
+ストアに登録するアイコンは `icons/icon-128.png`、スクリーンショットは `store/screenshot-1.png` を使います。
