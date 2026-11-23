@@ -42,29 +42,31 @@ chrome.runtime.onInstalled.addListener(() => {
 
 });
 
-chrome.contextMenus.onClicked.addListener((info, tab) => {
+chrome.contextMenus.onClicked.addListener(handleMenuClick);
+
+function handleMenuClick(info, tab) {
   if (info.menuItemId === "copyTitle") {
     const text = tab.title;
-    copyTextToClipboard(tab.id, text);
+    return copyTextToClipboard(tab.id, text);
   } else if (info.menuItemId === "copyURL") {
     const text = tab.url;
-    copyTextToClipboard(tab.id, text);
+    return copyTextToClipboard(tab.id, text);
   } else if (info.menuItemId === "copyMarkdown") {
     const text = `[${tab.title}](${tab.url})`;
-    copyTextToClipboard(tab.id, text);
+    return copyTextToClipboard(tab.id, text);
   } else if (info.menuItemId === "copyTitleAndURL") {
     const text = `${tab.title}\n${tab.url}`;
-    copyTextToClipboard(tab.id, text);
+    return copyTextToClipboard(tab.id, text);
   } else if (info.menuItemId === "copyURLWithoutQuery") {
     const url = new URL(tab.url);
     url.search = '';
     url.hash = '';
-    copyTextToClipboard(tab.id, url.toString());
+    return copyTextToClipboard(tab.id, url.toString());
   }
-});
+}
 
 function copyTextToClipboard(tabId, text) {
-  chrome.scripting.executeScript({
+  return chrome.scripting.executeScript({
     target: { tabId: tabId },
     func: (text) => {
       const input = document.createElement('textarea');

@@ -1,0 +1,11 @@
+{
+  "name": "webpage-clipboard-tool",
+  "private": true,
+  "scripts": {
+    "postinstall": "playwright install chromium",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1"
+  }
+}
