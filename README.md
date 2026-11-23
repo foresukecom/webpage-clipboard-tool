@@ -54,3 +54,14 @@ nix develop
 ```
 
 ツールを追加・変更する場合は `flake.nix` の `packages` を編集してください。
+
+### テスト
+
+[Playwright](https://playwright.dev/) で、拡張機能を読み込んだ Chromium を起動してテストします。
+
+```bash
+npm install   # postinstall で Playwright 用の Chromium も取得されます
+npm test
+```
+
+右クリックメニューは Playwright から操作できないため、テストではメニュークリック時に呼ばれる `handleMenuClick` を直接実行しています。
