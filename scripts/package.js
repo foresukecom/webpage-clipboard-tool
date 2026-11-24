@@ -2,18 +2,17 @@
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const { EXTENSION_FILES } = require('./extension-files');
+const { buildExtension } = require('./build');
 
 const root = path.join(__dirname, '..');
 const { version } = JSON.parse(fs.readFileSync(path.join(root, 'manifest.json'), 'utf8'));
-const distDir = path.join(root, 'dist');
-const zipPath = path.join(distDir, `webpage-clipboard-tool-${version}.zip`);
+const zipPath = path.join(root, 'dist', `webpage-clipboard-tool-${version}.zip`);
 
-fs.mkdirSync(distDir, { recursive: true });
+const extensionDir = buildExtension();
 fs.rmSync(zipPath, { force: true });
 // -X: macOSの拡張属性などを含めない
-execFileSync('zip', ['-r', '-X', zipPath, ...EXTENSION_FILES, '-x', '.DS_Store', '*/.DS_Store'], {
-  cwd: root,
+execFileSync('zip', ['-r', '-X', zipPath, '.', '-x', '.DS_Store', '*/.DS_Store'], {
+  cwd: extensionDir,
   stdio: 'inherit',
 });
 console.log(`\n${path.relative(root, zipPath)} を作成しました`);

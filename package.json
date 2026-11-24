@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "postinstall": "playwright install chromium",
+    "build": "node scripts/build.js",
     "test": "playwright test",
     "package": "node scripts/package.js",
     "screenshots": "node scripts/screenshots.js"
