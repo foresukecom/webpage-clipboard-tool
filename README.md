@@ -71,7 +71,7 @@ npm test
 ```bash
 npm run package       # dist/webpage-clipboard-tool-<version>.zip を作成
 npm run screenshots   # store/*.html から 1280x800 のスクリーンショットを作成
-./scripts/generate-icons.sh  # images/icon-source.png から icons/ を再生成
+./scripts/generate-icons.sh  # images/icon-source*.svg から icons/ を再生成
 ```
 
 ストアに登録するアイコンは `icons/icon-128.png`、スクリーンショットは `store/screenshot-1.png` を使います。
