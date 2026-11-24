@@ -22,8 +22,12 @@
           packages = with pkgs; [
             nodejs_24
             pnpm
+            # タスクランナー（justfile）
+            just
             # ストア提出用のzip作成に使う
             zip
+            # アイコン画像の生成に使う
+            imagemagick
           ];
         };
       });

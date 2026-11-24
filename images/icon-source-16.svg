@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- 16px用の簡略版。縁と留め具を細くして紙の面積を広げ、リンク記号の線を太くしている -->
+  <rect x="16" y="14" width="96" height="110" rx="16" fill="#f2a20c"/>
+  <rect x="26" y="28" width="76" height="86" rx="8" fill="#ffffff"/>
+  <rect x="42" y="4" width="44" height="20" rx="8" fill="#9a5a06"/>
+  <g transform="translate(18 25) scale(0.71875) rotate(-45 64 64)" fill="none" stroke="#b05f00" stroke-width="20" stroke-linecap="round">
+    <path d="M52 47 H36 a17 17 0 0 0 0 34 H52"/>
+    <path d="M76 47 H92 a17 17 0 0 1 0 34 H76"/>
+    <path d="M48 64 H80"/>
+  </g>
+</svg>

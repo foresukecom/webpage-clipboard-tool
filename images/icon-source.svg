@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- クリップボード -->
+  <rect x="22" y="16" width="84" height="104" rx="14" fill="#f2a20c"/>
+  <rect x="34" y="32" width="60" height="76" rx="7" fill="#ffffff"/>
+  <rect x="44" y="8" width="40" height="20" rx="7" fill="#9a5a06"/>
+  <!-- リンク記号 -->
+  <g transform="translate(30 36) scale(0.53125) rotate(-45 64 64)" fill="none" stroke="#c26d06" stroke-width="13" stroke-linecap="round">
+    <path d="M52 47 H36 a17 17 0 0 0 0 34 H52"/>
+    <path d="M76 47 H92 a17 17 0 0 1 0 34 H76"/>
+    <path d="M48 64 H80"/>
+  </g>
+</svg>
