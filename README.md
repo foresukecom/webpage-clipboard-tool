@@ -1,8 +1,8 @@
-# WebPage Clipboard Tool
+# Page Card – タイトルとURLをコピー
 
 ## 概要
 
- WebPage Clipboard Toolは、現在のページのタイトルとURLをさまざまな形式でクリップボードにコピーするためのChrome拡張機能です。  
+ Page Cardは、現在のページのタイトルとURLをさまざまな形式でクリップボードにコピーするためのChrome拡張機能です。  
 
 
 ## 機能
