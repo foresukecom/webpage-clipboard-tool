@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "ページ情報をコピー",
-  "version": "1.5",
+  "name": "Page Card – タイトルとURLをコピー",
+  "version": "1.6",
   "description":"現在のページのタイトルとURLをさまざまな形式でクリップボードにコピーします。",
   "permissions": [
     "contextMenus",
